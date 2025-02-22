@@ -1,6 +1,6 @@
 const express = require("express");
 const multer = require("multer");
-const {registerUser,loginUser,createPost,getPosts,addComment,toggleLike}=require("../controllers/authController");
+const {registerUser,loginUser,createPost,getPosts,addComment,toggleLike,getUserPosts}=require("../controllers/authController");
 
 const router = express.Router();
 
@@ -25,6 +25,7 @@ router.post("/posts", upload.single("image"), createPost);
 router.get("/posts", getPosts); 
 router.post("/posts/:postId/comment", addComment);
 router.post("/like", toggleLike);
+router.get("/posts/user/:userId", getUserPosts);
 
 
 module.exports = router;

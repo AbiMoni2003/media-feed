@@ -160,3 +160,20 @@ exports.toggleLike = async (req, res) => {
         return res.status(500).json({ success: false, message: "Database error!", error });
     }
 };
+
+exports.getUserPosts = async (req, res) => {
+    const { userId } = req.params;
+  
+    try {
+      const [posts] = await db.query("SELECT * FROM posts WHERE user_id = ?", [userId]);
+  
+      if (posts.length === 0) {
+        return res.status(404).json({ message: "No posts found for this user" });
+      }
+  
+      res.json(posts);
+    } catch (error) {
+      console.error("Error fetching user posts:", error);
+      res.status(500).json({ message: "Internal server error" });
+    }
+  };

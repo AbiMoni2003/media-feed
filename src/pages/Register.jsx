@@ -41,7 +41,7 @@ const Login = () => {
   return (
     <Container maxWidth="sm">
       <Typography variant="h4" gutterBottom>
-        Login
+        Register
       </Typography>
 
       {message && <Alert severity="success">{message}</Alert>}
@@ -80,7 +80,7 @@ const Login = () => {
         fullWidth
         sx={{ marginTop: 2 }}
       >
-        Login
+        Register
       </Button>
     </Container>
   );
